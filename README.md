@@ -1,5 +1,5 @@
 GHI CHÚ
-- WebCoffee.doc **gồm** Mọi thông tin chi tiết và hình ảnh minh họa màn hình của những chức năng
+- WebsiteCoffee.pdf **gồm** Mọi thông tin chi tiết và hình ảnh minh họa màn hình của những chức năng
 - Công cụ hỗ trợ: Visual Studio
 
 TÓM TẮT CÁC CHỨC NĂNG ĐÃ LÀM ĐƯỢC
