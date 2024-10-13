@@ -1,0 +1,50 @@
+﻿@model WebsiteBanCaPhe.Models.Newspaper
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+
+<div style="margin: 10px auto; width: 70%;">
+
+    <div>
+
+        <hr />
+
+        <h2>
+            @Html.DisplayFor(model => model.Title)
+        </h2>
+
+        <h5>
+            @Html.DisplayFor(model => model.date)
+        </h5>
+
+
+        <h2 style="text-align: center">
+            <img style="width:400px;height:400px" src="~/Image/@Model.Image">
+        </h2>
+
+
+        <h4>
+
+            @Html.DisplayFor(model => model.Content)
+        </h4>
+
+        <h4>
+            @Html.DisplayFor(model => model.des)
+        </h4>
+        <h4>
+            @Html.DisplayFor(model => model.detail)
+        </h4>
+
+
+
+
+
+
+    </div>
+    <p>
+        @Html.ActionLink("Quay về trang chủ", "Index")
+    </p>
+</div>

@@ -1,0 +1,79 @@
+﻿@using WebsiteBanCaPhe.Models
+@model List<CartItem>
+@{
+    ViewBag.Title = "GetCartInfo";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<div style="margin: 10px auto; width: 90%;">
+    <h2 style="text-align: center">THÔNG TIN GIỎ HÀNG</h2>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>MÃ SẢN PHẨM</th>
+                <th>TÊN</th>
+                <th>ẢNH</th>
+                <th>SỐ LƯỢNG</th>
+                <th>ĐƠN GIÁ</th>
+                <th>THÀNH TIỀN</th>
+                <th>CHI TIẾT</th>
+                <th>CẬP NHẬT</th>
+                <th>XÓA</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductID</td>
+                    <td>@product.NamePro</td>
+                    <td>
+                        <img src="~/Image/@product.ImagePro" style="width: 100px;" />
+                    </td>
+                    @using (Html.BeginForm("UpdateCartItem", "Cart", new
+                    {
+                        id =
+                   product.ProductID
+                    }))
+                    {
+                        <td>
+                            <input type="number" min="1" value="@product.Number"
+                                   name="Number" />
+                        </td>
+                        <td>@product.Price</td>
+                        <td>@product.FinalPrice()</td>
+                        <td>
+                            @Html.ActionLink("Details", "Details",
+                   "CustomerProducts", new { id = product.ProductID }, new
+                            {
+                                @class = "btn btn-success"
+                   })
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </td>
+                    }
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteCartItem", "Cart", new
+                        {
+                id = product.ProductID
+                        }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            <tr style="font-weight:bold; text-align:right; color:red;">
+                <td colspan="5">Tổng số lượng: @ViewBag.TotalNumber</td>
+                <td colspan="1">Tổng tiền: @ViewBag.TotalPrice</td>
+            </tr>
+            <tr style="font-weight:bold; text-align:center;">
+                <td colspan="9">
+                    @Html.ActionLink("FINISH", "ConfirmCart", null, new
+                    {
+                        @class =
+                   "btn btn-primary"
+                    })
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

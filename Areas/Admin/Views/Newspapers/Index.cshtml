@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebsiteBanCaPhe.Models.Newspaper>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 100%;">
+    <h2 style="text-align: center">THÔNG TIN BILL</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                DATE
+            </th>
+            <th></th>
+
+        </tr>
+
+
+
+        @foreach (var item in Model)
+        {   
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td><img src="~/Image/@item.Image" style="width:100px;height:80px" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                   
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IDNew }, new {@class="btn btn-primary"}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IDNew }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IDNew }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+    }
+
+        </table>
+    </div>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>

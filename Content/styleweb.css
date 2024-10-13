@@ -1,0 +1,92 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+.body {
+    font-family: Arial;
+}
+/*ảnh động*/
+
+
+    #container > img {
+        height: 100%;
+        margin: 2px;
+        scroll-snap-align: none start;
+        scroll-margin: 0 0 0 20px;
+    }
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+/*/* Bố cục linh hoạt: ba cột xếp chồng lên nhau thay vì cạnh nhau khi màn hình có chiều rộng dưới 600px*/
+@media screen and (max-width: 600px) {
+    .center {
+        width: 100%;
+    }
+}
+/**/
+/* Định dạng footer */
+.footer {
+    background-color: #16191d;
+    color: #fff;
+    text-align: center;
+    clear: left;
+}
+
+.icon-bar {
+    position: absolute;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+    .icon-bar a {
+        text-align: center;
+        padding: 8px;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 10px;
+    }
+
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+.facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.google {
+    background: #dd4b39;
+    color: white;
+}
+
+.linkedin {
+    background: #007bb5;
+    color: white;
+}
+
+.youtube {
+    background: #bb0000;
+    color: white;
+}

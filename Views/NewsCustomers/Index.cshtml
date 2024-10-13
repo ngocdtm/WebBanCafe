@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebsiteBanCaPhe.Models.Newspaper>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 90%;">
+
+    <h2 style="text-align: center">DANH SÁCH TIN TỨC</h2>
+    <hr />
+  
+
+
+    @using (Html.BeginForm("Index", "NewsCustomers", FormMethod.Get))
+    {
+
+        <div class="row">
+
+            @foreach (var newss in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="card h-100">
+                        <img class="card-img-top"
+                             src="~/Image/@newss.Image" style="width:330px; height:300px">
+                        <div class="card-body" style="text-align: center">
+                            <h4 class="card-title">@newss.Title</h4>
+                            <p class="card-text">@newss.date</p>
+                            @Html.ActionLink("CHI TIẾT", "Details", new
+                       {
+                           id = newss.IDNew
+                       }, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

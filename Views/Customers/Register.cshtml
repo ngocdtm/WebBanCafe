@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+@using WebsiteBanCaPhe.Models
+@model Customer
+<div style="margin: 10px auto; width: 70%;">
+    <h2 style="text-align: center">ĐĂNG KÍ THÀNH VIÊN</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">TÊN ĐĂNG NHẬP:</label>
+            <input type="text" class="form-control" id="name" name="NameCus"
+                   required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">ĐIỆN THOẠI:</label>
+            <input type="text" class="form-control" id="name" name="PhoneCus"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">PASSWORD:</label>
+            <input type="password" class="form-control" id="pwd" name="PassCus"
+                   required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">ĐỊA CHỈ:</label>
+            <input type="text" class="form-control" id="name" name="Address"
+                   required>
+        </div>
+        <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
+    }
+</div>

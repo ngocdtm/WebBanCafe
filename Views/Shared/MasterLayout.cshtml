@@ -1,0 +1,186 @@
+﻿@using WebsiteBanCaPhe.Models;
+@using WebsiteBanCaPhe.Controllers;
+@{
+    var user = (Customer)Session["Customer"];
+}
+@*@{ Layout = "~/Views/Shared/MasterLayout.cshtml";}*@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- Brand/logo -->
+
+    <link href="~/Content/styleweb.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="col-1 logo">
+            <a class="navbar-brand" href="Index"> <img src="~/Content/images/logo.png" alt="logo" style="width: 26px"></a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-4 search_box">
+            <form class="d-flex search_form" method="get" action="~/CustomerProducts/Index" role="search">
+                @Html.TextBox("searchString", ViewBag.searchString as string, new
+           {
+               @class = "search_bar form-control me-2",
+               @placeholder = "Search...",
+               @style = "width: 150px;\r\n  box-sizing: border-box;\r\n  border: 2px solid #ccc;\r\n  border-radius: 4px;\r\n  font-size: 16px;\r\n ;backgroung-image:url('searchicon.png'); \r\n;background-color: white;\r\n ; \r\n  background-repeat: no-repeat;\r\n  padding: 0px 0px 0px 40px;\r\n  -webkit-transition: width 0.4s ease-in-out;\r\n  transition: width 0.4s ease-in-out;",
+               @type = "seach"
+           })
+                <button class="search_btn btn btn-success" type="submit"
+                        style="border: none; border-radius: 15px;">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass">Submit</i>
+                </button>
+            </form>
+        </div>
+        @*<div class="ms-auto">
+            @Html.Action("FavoritePartial", "Favourites")
+        </div>
+        <div class="ms-auto">
+          1
+        </div>*@
+      
+        <div class="ms-auto">
+            @Html.Action("CartPartial", "Cart")
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Home/Index">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="http://localhost:53060/CustomerProducts/Index" role="button" data-bs-toggle="dropdown">Menu</a>
+                    <ul class="dropdown-menu">
+                        @Html.Action("GetProductsByCategory", "CustomerProducts")
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="@Url.Action("About", "Home")" role="button" data-bs-toggle="dropdown">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="~/Home/Index">Công ty</a></li>
+                        <li><a class="dropdown-item" href="~/Home/Index">Các chi nhánh khác</a></li>
+                        <li><a class="dropdown-item" href="~/Home/Index">Khuyến mãi</a></li>
+                        <li><a class="dropdown-item" href="~/Home/Index">Tuyển dụng</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "TinTuc")">Tin tức</a>
+                </li>
+            </ul>
+
+        </div>
+        @if (user == null)
+        {
+            <div class="col-2 account--info d-flex align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="MenuLink" href="~/Home/Index" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="~/Content/images/login.png" alt="logo" style="width: 26px">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="MenuLink">
+                        <li><a class="dropdown-item" href="@Url.Action("Login", "Customers")">Đăng nhập</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Register", "Customers")">Đăng kí</a></li>
+                    </ul>
+                </div>
+            </div>}
+        else
+        {
+            <div class="col-2 account--info d-flex align-items-center">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" action="~/CustomerProducts/Index" type="button" id="MenuLink" action="~/CustomerProducts/Index" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span>Chào </span>@user.NameCus
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="MenuLink">
+                        <li><a class="dropdown-item" href="@Url.Action("Logout", "Customers")">Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Index", "OrderPro")">Chi tiết hóa đơn</a></li>
+                        <li><a class="dropdown-item" href="@Url.Action("Index", "Customers")">Thông tin khách hàng</a></li>
+                        @*<li><a class="dropdown-item" href="@Url.Action("Index", "Favourites")">List favorite</a></li>*@
+                    </ul>
+                </div>
+            </div>}
+    </nav>
+    <div class="container-xxl mt-3 border">
+        @RenderBody()
+    </div>
+    <div class="footer mt-4">
+        <div class="row footer-row">
+            <div class="col footer_col">
+                <h5 class="footer_item">
+                    Giới thiệu
+                </h5>
+                <a href="" class="footer_item_link">Về chúng tôi</a> <br>
+                <a href="" class="footer_item_link">Sản phẩm</a> <br>
+                <a href="" class="footer_item_link">Khuyến mãi</a> <br>
+                <a href="" class="footer_item_link">Hệ thống cửa hàng</a> <br>
+                <a href="" class="footer_item_link">Tuyển dụng</a> <br>
+            </div>
+            <div class="col footer_col">
+                <h5 class="footer_item">
+                    Điều khoản
+                </h5>
+                <a href="/Home/Contact" class="footer_item_link">Điều khoản sử dụng</a> <br>
+                <a href="" class="footer_item_link">Chính sách bảo mật thông tin</a> <br>
+                <a href="" class="footer_item_link">Chính sách đặt hàng</a> <br>
+                <a href="/Home/About" class="footer_item_link">Hướng dẫn xuất hóa đơn</a> <br>
+            </div>
+            <div class="col footer_col">
+                <h5 class="footer_item">
+                    Đặt hàng: 1800 1919
+                </h5>
+                <h5> Email:huflit@st.huflit.edu.vn</h5>
+
+                <h5>Địa chỉ : 828 Đ.Sư Vạn Hạnh,Phường 13, Quận 10,TP.Hồ Chí Minh</h5> <br />
+            </div>
+            <div class="col footer_col">
+                <div class="icon-bar">
+                    <br /><br />  <br /><br />
+                    <br /><br />  <br /><br />
+
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google"></i></a>
+                    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

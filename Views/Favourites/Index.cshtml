@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebsiteBanCaPhe.Models.Favourite>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+
+<h2 style="text-align: center">THÔNG TIN CUSTOMERS</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDPro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.NameCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.PhoneCus)
+        </th>
+       
+        <th>Function</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.NamePro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.NameCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.PhoneCus)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+</table>

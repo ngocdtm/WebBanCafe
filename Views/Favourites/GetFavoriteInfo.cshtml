@@ -1,0 +1,58 @@
+﻿@using WebsiteBanCaPhe.Models
+@model List<Favorite>
+@{
+    ViewBag.Title = "GetFavoriteInfo";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<div style="margin: 10px auto; width: 90%;">
+    <h2 style="text-align: center">DANH SÁCH SẢN PHẨM</h2>
+    <hr />
+    @using (Html.BeginForm("Index", "CustomerProducts", FormMethod.Get))
+    {
+        <div class="mt-2">
+            <div class="d-flex align-items-center">
+                <span class="me-2"> Sắp xếp theo giá</span>
+                <select class="form-select me-2 w-75" name="sortOrder">
+                    <option selected value="">--Sắp xếp--</option>
+                    <option value="price_asc">Giá tăng dần</option>
+                    <option value="price_desc">Giá giảm dần</option>
+                </select>
+                <input class="btn btn-info text-light" type="submit" value="Sắp xếp" />
+            </div>
+        </div>
+
+        if (ViewBag.searchResult != null)
+        {
+            <p class="fw-bold text-dark mt-2">@ViewBag.searchResult</p>
+        }
+    }
+    <div class="row">
+        @foreach (var sanpham in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-3">
+                <div class="card h-100">
+                    <img class="card-img-top"
+                         src="~/Image/@sanpham.ImagePro" style="width:330px; height:300px">
+                    <div class="card-body" style="text-align: center">
+                        <h4 class="card-title">@sanpham.NamePro</h4>
+                        <p class="card-text">@sanpham.Price</p>
+                        <a href="@Url.Action("AddToFavorite", "Favourites", new {
+     id = sanpham.ProductID })">
+                            <img class="card-img-top"
+                                 src="~/Image/tim.png" style="width:40px; height:40px">
+                        </a>
+
+                        @Html.ActionLink("CHI TIẾT", "Details", new
+                        {
+                            id
+                       = sanpham.ProductID
+                        }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64411217274544bcbc0330ab34d45602" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.AdminUser" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Category" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Contact" Width="1.5" PointX="7.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Customer" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Favourite" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Newspaper" Width="1.5" PointX="7.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.OrderDetail" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.OrderPro" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Payment" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Product" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.ReviewProduct" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebsiteCoffeeModel.Voucher" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK_Pro_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK__Favourite__CusID__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK__OrderPro__IDCus__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK__Favourite__IDPro__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK__OrderDeta__IDOrd__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK__OrderDeta__IDPro__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="WebsiteCoffeeModel.FK_ReviewProduct_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
